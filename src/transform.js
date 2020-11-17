@@ -287,7 +287,7 @@ export default class i18nTransform extends Transform {
     }
       else
     {
-      text = JSON.stringify(contents, null, this.options.indentation) + '\n'
+      text = JSON.stringify(contents, null, this.options.indentation) + 'json\n'
     }
 
     if (this.options.lineEnding === 'auto') {
