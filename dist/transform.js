@@ -282,6 +282,11 @@ i18nTransform = function (_Transform) {_inherits(i18nTransform, _Transform);
       var text = void 0;
       if (path.endsWith('yml')) {
         text = _yamljs2.default.stringify(contents, null, this.options.indentation);
+      } else if (path.endsWith('js')) {
+        text =
+        'export default ' +
+        JSON.stringify(contents, null, this.options.indentation) +
+        ';\n';
       } else {
         text = JSON.stringify(contents, null, this.options.indentation) + '\n';
       }

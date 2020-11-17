@@ -283,11 +283,12 @@ export default class i18nTransform extends Transform {
     if (path.endsWith('yml')) {
       text = YAML.stringify(contents, null, this.options.indentation)
     } else if (path.endsWith('js')) {
-      text = 'export default '+JSON.stringify(contents, null, this.options.indentation) + ';\n'
-    }
-      else
-    {
-      text = JSON.stringify(contents, null, this.options.indentation) + 'json\n'
+      text =
+        'export default ' +
+        JSON.stringify(contents, null, this.options.indentation) +
+        ';\n'
+    } else {
+      text = JSON.stringify(contents, null, this.options.indentation) + '\n'
     }
 
     if (this.options.lineEnding === 'auto') {
