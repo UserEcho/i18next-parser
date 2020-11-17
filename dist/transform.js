@@ -263,8 +263,13 @@ i18nTransform = function (_Transform) {_inherits(i18nTransform, _Transform);
     path) {
       try {
         var content = void 0;
+        var fileContent = void 0;
         if (path.endsWith('yml')) {
           content = _yamljs2.default.parse(_fs2.default.readFileSync(path).toString());
+        } else if (path.endsWith('js')) {
+          fileContent = _fs2.default.readFileSync(path);
+          content = fileContent.substring(15).slice(0, -1);
+          content = JSON.parse(content);
         } else {
           content = JSON.parse(_fs2.default.readFileSync(path));
         }

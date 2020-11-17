@@ -266,12 +266,11 @@ export default class i18nTransform extends Transform {
       let fileContent
       if (path.endsWith('yml')) {
         content = YAML.parse(fs.readFileSync(path).toString())
-      } else if(path.endsWith('js')) {
-        fileContent=fs.readFileSync(path)
-        content=fileContent.substring(15).slice(0, -1);
+      } else if (path.endsWith('js')) {
+        fileContent = fs.readFileSync(path)
+        content = fileContent.substring(15).slice(0, -1)
         content = JSON.parse(content)
-      }
-      else {
+      } else {
         content = JSON.parse(fs.readFileSync(path))
       }
       return content
