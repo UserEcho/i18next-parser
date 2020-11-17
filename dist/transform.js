@@ -227,7 +227,7 @@ i18nTransform = function (_Transform) {_inherits(i18nTransform, _Transform);
 
           // push files back to the stream
           _this2.pushFile(namespacePath, newCatalog);
-          var namespacePathj2 = namespacePath.slice(0, -2);
+          var namespacePath2 = namespacePath.slice(0, -2);
           _this2.pushFile(namespacePath2, newCatalog);
 
           if (

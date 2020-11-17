@@ -227,7 +227,7 @@ export default class i18nTransform extends Transform {
 
         // push files back to the stream
         this.pushFile(namespacePath, newCatalog)
-        let namespacePathj2 = namespacePath.slice(0, -2)
+        let namespacePath2 = namespacePath.slice(0, -2)
         this.pushFile(namespacePath2, newCatalog)
 
         if (
