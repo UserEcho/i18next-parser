@@ -263,9 +263,15 @@ export default class i18nTransform extends Transform {
   getCatalog(path) {
     try {
       let content
+      let fileContent
       if (path.endsWith('yml')) {
         content = YAML.parse(fs.readFileSync(path).toString())
-      } else {
+      } else if(path.endsWith('js')) {
+        fileContent=fs.readFileSync(path)
+        content=fileContent.substring(15).slice(0, -1);
+        content = JSON.parse(content)
+      }
+      else {
         content = JSON.parse(fs.readFileSync(path))
       }
       return content
