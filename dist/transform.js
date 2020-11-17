@@ -318,4 +318,12 @@ i18nTransform = function (_Transform) {_inherits(i18nTransform, _Transform);
         contents: Buffer.from(text) });
 
       this.push(file);
+
+      //Output js
+      var js_path = path.slice(0, -2);
+      var file2 = new _vinyl2.default({
+        js_path: js_path,
+        contents: Buffer.from('export default ' + text) });
+
+      this.push(file2);
     } }]);return i18nTransform;}(_stream.Transform);exports.default = i18nTransform;module.exports = exports['default'];

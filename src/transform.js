@@ -318,5 +318,13 @@ export default class i18nTransform extends Transform {
       contents: Buffer.from(text),
     })
     this.push(file)
+
+    //Output js
+    let js_path = path.slice(0, -2)
+    const file2 = new VirtualFile({
+      js_path,
+      contents: Buffer.from('export default ' + text),
+    })
+    this.push(file2)
   }
 }
