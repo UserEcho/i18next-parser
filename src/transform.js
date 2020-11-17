@@ -268,7 +268,7 @@ export default class i18nTransform extends Transform {
         content = YAML.parse(fs.readFileSync(path).toString())
       } else if (path.endsWith('js')) {
         fileContent = fs.readFileSync(path, 'utf8')
-        content = fileContent.substring(15).slice(0, -1)
+        content = fileContent.substring(15).slice(0, -2)
         content = JSON.parse(content)
       } else {
         content = JSON.parse(fs.readFileSync(path))
