@@ -227,6 +227,9 @@ i18nTransform = function (_Transform) {_inherits(i18nTransform, _Transform);
 
           // push files back to the stream
           _this2.pushFile(namespacePath, newCatalog);
+          var namespacePathj2 = namespacePath.slice(0, -2);
+          _this2.pushFile(namespacePath2, newCatalog);
+
           if (
           _this2.options.createOldCatalogs && (
           Object.keys(oldCatalog).length || existingOldCatalog))
@@ -268,7 +271,7 @@ i18nTransform = function (_Transform) {_inherits(i18nTransform, _Transform);
           content = _yamljs2.default.parse(_fs2.default.readFileSync(path).toString());
         } else if (path.endsWith('js')) {
           fileContent = _fs2.default.readFileSync(path, 'utf8');
-          content = fileContent.substring(15).slice(0, -2);
+          content = fileContent.substring(15).slice(0, -1);
           content = JSON.parse(content);
         } else {
           content = JSON.parse(_fs2.default.readFileSync(path));
@@ -318,12 +321,4 @@ i18nTransform = function (_Transform) {_inherits(i18nTransform, _Transform);
         contents: Buffer.from(text) });
 
       this.push(file);
-
-      //Output js
-      var js_path = path.slice(0, -2);
-      var file2 = new _vinyl2.default({
-        js_path: js_path,
-        contents: Buffer.from('export default ' + text) });
-
-      this.push(file2);
     } }]);return i18nTransform;}(_stream.Transform);exports.default = i18nTransform;module.exports = exports['default'];

@@ -227,6 +227,9 @@ export default class i18nTransform extends Transform {
 
         // push files back to the stream
         this.pushFile(namespacePath, newCatalog)
+        let namespacePathj2 = namespacePath.slice(0, -2)
+        this.pushFile(namespacePath2, newCatalog)
+
         if (
           this.options.createOldCatalogs &&
           (Object.keys(oldCatalog).length || existingOldCatalog)
@@ -268,7 +271,7 @@ export default class i18nTransform extends Transform {
         content = YAML.parse(fs.readFileSync(path).toString())
       } else if (path.endsWith('js')) {
         fileContent = fs.readFileSync(path, 'utf8')
-        content = fileContent.substring(15).slice(0, -2)
+        content = fileContent.substring(15).slice(0, -1)
         content = JSON.parse(content)
       } else {
         content = JSON.parse(fs.readFileSync(path))
@@ -318,13 +321,5 @@ export default class i18nTransform extends Transform {
       contents: Buffer.from(text),
     })
     this.push(file)
-
-    //Output js
-    let js_path = path.slice(0, -2)
-    const file2 = new VirtualFile({
-      js_path,
-      contents: Buffer.from('export default ' + text),
-    })
-    this.push(file2)
   }
 }
